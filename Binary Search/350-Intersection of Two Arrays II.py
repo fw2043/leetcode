@@ -77,3 +77,27 @@ class Solution:
 """
 Method 3: Binary Search:
 """
+
+
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        #
+        if len(nums1) > len(nums2):
+            nums1, nums2 = nums2, nums1
+        nums1.sort()
+        result = []
+        for index in range(len(nums2)):
+            temp = nums2[index]
+            start, end = 0, len(nums1) - 1
+            while start <= end:
+                mid = start + (end - start) // 2
+                if nums1[mid] == temp:
+                    result.append(temp)
+                    nums1.pop(mid)
+                    break
+                if nums1[mid] < temp:
+                    start = mid - 1
+                else:
+                    end = mid + 1
+        return result
+
