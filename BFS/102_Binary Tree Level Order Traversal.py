@@ -10,7 +10,7 @@ import collections
 from typing import List, Optional
 
 """
-Method 1: queue:
+Method 1: using one queue: q
 """
 
 
@@ -50,8 +50,49 @@ class Solution:
 
         return res
 
+"""
+Method 2: using one queue: using the poped out node to get the next level and then append them to current_level
+"""
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+
+        current_level = collections.deque([root])
+        results = []
+        while current_level:
+            # print(current_level)
+            # [3]
+            res = []
+            length_current_level = len(current_level)
+            for i in range(length_current_level):
+
+                # ######### using this poped out node to get the next level node and then append to current level
+                node = current_level.popleft()  # delete/pop 3 from current level
+                # print(i, current_level)  # empty []
+                res.append(node.val)
+                if node.left:
+                    # [9]
+                    current_level.append(node.left)
+                if node.right:
+                    # current level: [9,20]
+                    current_level.append(node.right)
+            # print(current_level)
+            results.append(res)
+
+        return results
+
+
 """"
-Method2:
+Method3: using two queue: current_level and next_level
 """
 
 
@@ -69,7 +110,9 @@ class Solution:
         current_level = [root]
         results = []
         while current_level:
+            # save the values at the current level
             res = []
+            # save the next level
             next_level = []
             for node in current_level:
                 res.append(node.val)
@@ -77,10 +120,10 @@ class Solution:
                     next_level.append(node.left)
                 if node.right:
                     next_level.append(node.right)
+            # update the current level
             current_level = next_level
             results.append(res)
 
         return results
-
 
 
