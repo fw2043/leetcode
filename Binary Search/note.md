@@ -1,4 +1,5 @@
 # some questions you might want to confirm:
+## 0. the pivot is mid which is used to travel the items
 ## 1. is the list sorted or not(ascending or descending? like trictly increasing order
 ## 2. if the nums are unique or have duplicates
 ## 3. if it does not exist, what result do you want----return -1
