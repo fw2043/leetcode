@@ -13,5 +13,9 @@ brute force/ binary search**
 ## 5.how long of this list, if it is not too long, you might be able to use O(N)-- BRUTE FORCE, like leetcode 1539
 ## 6. confirm the length of the list for mid = (left + right) // 2 ---> not overflow, to avoid overflow you can use: 
 mid = l + (r = l) // 2
+## 6. how to control just search left/right part---> adding one viable e.g leftBias-----> leetcode 34
+
+## 7. Find the unique data structues you can use> like 362: Design Hit Counter,---queue(FIFO)
+
 
 
