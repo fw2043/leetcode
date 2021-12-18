@@ -47,8 +47,12 @@ return False
 **Linked List is all about the link, how to link them, like leetcode92**
 **most time you need to change the links(next), but sometimes you might just need to swap/change values**
 
+**Either hashtable or two pointers**
 
 
+**The difference between left = right = ListNode(0, None) AND left, right = ListNode(0, None), ListNode(0, None):**
+
+One list with two pointers or Two separated lists 
 
 
 
