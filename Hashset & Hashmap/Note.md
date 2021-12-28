@@ -1,4 +1,5 @@
 # Hashmap:
+# TIme complexity for inset and delete is: O(1)
  Initialize: prevMap = {}
  
  Add:  prevMap[value] = index
@@ -27,3 +28,11 @@ To pop any item:
 To pop right or left item:
     
     popitem(last=True)
+    
+# note: 
+
+s = 'eat'
+
+sorted(s) ====> ['a', 'e', 't']
+
+sorted_string = ''.join(sorted(s))  ===> 'aet'
