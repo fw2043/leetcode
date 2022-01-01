@@ -1,5 +1,5 @@
 # Hashmap:
-# TIme complexity for inset and delete is: O(1)
+# **TIme complexity for insert and delete is: O(1)**
  Initialize: prevMap = {}
  
  Add:  prevMap[value] = index
