@@ -30,3 +30,12 @@ temp = Counter('aabbc')
 print(temp)
 #output: {'a': 2, 'b': 2, 'c': 1}
 
+
+count = Counter(s)  # hashmap: {'a': 3, 'b': 1}
+# maxHeap: {[-3,'a'], [-1, 'b']}, put [-3,'a'], instead of ['a', 3] for sorting purpose and also max: * -1
+maxHeap = [[-cnt, char] for char, cnt in count.items()]
+heapq.heapify(maxHeap)
+
+count = Counter(words)
+count = sorted(count, key=lambda x:count[x], reverse=True)
+
