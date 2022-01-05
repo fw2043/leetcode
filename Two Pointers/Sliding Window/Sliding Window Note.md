@@ -1,6 +1,12 @@
 # **Sliding Window**
 1. Basic idea: https://www.geeksforgeeks.org/window-sliding-technique/
 2. Time complxity: Linear 
+# Intuition:
+    In any sliding window based problem we have two pointers. 
+    One right pointer whose job is to expand the current window 
+    and then at a point, the window becomes invalid, 
+    then we have the left pointer whose job is to contract a given window until it becomes valid again
+    At any point in time only one of these pointers move and the other one remains fixed.
 #Pattern:
 1. 定义需要用到的变量，
 
