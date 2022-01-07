@@ -12,7 +12,7 @@ from typing import List, Optional
 """
 Method 1: using one queue: q
 """
-
+## THe output format is List of List: [[3],[9,20],[15,7]]
 
 # Definition for a binary tree node.
 # class TreeNode:

@@ -49,3 +49,8 @@ print(id(l_2d_ok[0]) == id(l_2d_ok[1]) == id(l_2d_ok[2]))
 odds = [i for i in range(10) if i % 2 == 1]
 print(odds)
 # [1, 3, 5, 7, 9]
+
+# initilaze a list of int and list of list:
+q = deque([0]) # list of int
+newq = deque()
+newq.append([0]) # list of list

@@ -39,3 +39,7 @@ heapq.heapify(maxHeap)
 count = Counter(words)
 count = sorted(count, key=lambda x:count[x], reverse=True)
 
+# defaultdict
+from collections import defaultdict
+d = defaultdict(list)
+
