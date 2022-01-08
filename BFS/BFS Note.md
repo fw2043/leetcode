@@ -1,4 +1,5 @@
 # Graph 
+https://leetcode.com/explore/learn/card/graph/620/breadth-first-search-in-graph/3896/
 ## Definitions:
 1. Vertex/vertices
 2. Edges
@@ -48,3 +49,6 @@ The first path is the shortest path from a to b vertex
     Time Complexity: O(V+E). Here, V represents the number of vertices, and EE represents the number of edges. We need to check every vertex and traverse through every edge in the graph. The time complexity is the same as it was for the DFS approach.
     
     Space Complexity: O(V). Generally, we will check if a vertex has been visited before adding it to the queue, so the queue will use at most O(V) space. Keeping track of which vertices have been visited will also require O(V) space.
+    
+# How to traverse all the node:
+leetcode 102 & 103

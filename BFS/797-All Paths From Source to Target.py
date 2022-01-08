@@ -23,6 +23,7 @@ graph[i][j] != i (i.e., there will be no self-loops).
 All the elements of graph[i] are unique.
 The input graph is guaranteed to be a DAG.
 """
+# Bad Solution
 # put the current path to the queue and track the last node in the current path to find the next node
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:

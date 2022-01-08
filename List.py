@@ -54,3 +54,9 @@ print(odds)
 q = deque([0]) # list of int
 newq = deque()
 newq.append([0]) # list of list
+
+# 2D matrix: list[list[int]]:
+grid = [[0,0,0],[1,1,0],[1,1,0]]
+rows, columns = len(grid), len(grid[0])
+# if the cell is (x,y), then 8 directions:(x, y+1), (x, y-1), (x+1, y), (x-1, y), (x+1, y+1), (x+1, y-1),(x-1, y+1), (x-1, y-1)
+directions = [(0, 1), (0, -1), (1, 1), (-1, 1), (1, 0), (-1, 0), (1, 1), ()]
