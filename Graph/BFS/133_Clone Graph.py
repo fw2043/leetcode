@@ -36,7 +36,9 @@ class Node:
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
 """
-
+# The key is to figure out how to store the output: deep copy
+# Clone, so the output should be same: Nodes which store val and neighbors
+# visited[Node] ---> initialize a node visited[Node] = Node(node.val, [])
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':

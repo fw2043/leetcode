@@ -80,15 +80,16 @@ def bfs_graph(root):
 def bsf_graph(root):
     if not root:
         return
-    queue = [root]
+    queue = deque([root])
     seen = set([root])
     while queue:
-        new_queue = []
-        for node in queue:
+        size = len(queue)
+        for i in range(size):
+            node = queue.popleft()
             # do somethins with the node
             for neighbor in node.neighbors:
                 if neighbor not in seen:
-                    new_queue.append(neighbor)
+                    queue.append(neighbor)
                     seen.add(neighbor)
     return xxx
 

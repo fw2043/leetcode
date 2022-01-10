@@ -50,5 +50,18 @@ The first path is the shortest path from a to b vertex
     
     Space Complexity: O(V). Generally, we will check if a vertex has been visited before adding it to the queue, so the queue will use at most O(V) space. Keeping track of which vertices have been visited will also require O(V) space.
     
-# How to traverse all the node:
+## When do we need BFS:
+### 1. Level Order Traversal:
 leetcode 102 & 103
+
+### 2. Connected Component: leetcode 200, 994, 130
+
+即由一个点，找出图中所有的点。比如给出无向连通图(Undirected Connected Graph)中的一个点，找到这个图里的所有点。(Undirected: mark visited)
+
+### 3. Topological Sort:
+
+Find a global order for all nodes in a DAG(directed acyclic graph)
+
+### 4. Shortest Path in Simple Graph:
+
+注意这里一定要是简单图，也就是图中每条边长度都是1（或边长都相同）。为什么呢? 因为宽搜可以理解为一层层进行的，就跟二叉树遍历一样。要是层和层之间，或每层的长度都不一样，宽搜就没法进行了。通常这里简单图求最短路径用到BFS的都是无向图，极少数是有向图

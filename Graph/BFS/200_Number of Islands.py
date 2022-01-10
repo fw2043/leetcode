@@ -31,6 +31,12 @@ Method1: BFS
 Time complexity: O(MN)===> max: 4*M*N
 Space complexity: O(min(M, N))
 """
+# the value is string, not int '1',grid: List[List[str]]
+# edge case, empty or only one row
+# adjacnent connect: 4 directonal
+# whenever we find a 1, then we find a island, but need to extent it until the water
+# when the island end: encounter 0
+# need to mark visited
 
 
 class Solution:

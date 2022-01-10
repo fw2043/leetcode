@@ -21,9 +21,7 @@ Example 3:
 Input: grid = [[1,0,0],[1,1,0],[1,1,0]]
 Output: -1
 
-
 Constraints:
-
 n == grid.length
 n == grid[i].length
 1 <= n <= 100

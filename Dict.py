@@ -41,5 +41,13 @@ count = sorted(count, key=lambda x:count[x], reverse=True)
 
 # defaultdict
 from collections import defaultdict
-d = defaultdict(list)
-
+nei = collections.defaultdict(list)
+# add beginWord to the wordlist:
+wordList.append(beginWord)
+# fill the dictionary
+for word in wordList:
+    for j in range(len(word)):
+        pattern = word[:j] + "*" + word[j + 1:]
+        # print(pattern)
+        nei[pattern].append(word)
+        # print(nei)

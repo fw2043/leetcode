@@ -60,3 +60,7 @@ grid = [[0,0,0],[1,1,0],[1,1,0]]
 rows, columns = len(grid), len(grid[0])
 # if the cell is (x,y), then 8 directions:(x, y+1), (x, y-1), (x+1, y), (x-1, y), (x+1, y+1), (x+1, y-1),(x-1, y+1), (x-1, y-1)
 directions = [(0, 1), (0, -1), (1, 1), (-1, 1), (1, 0), (-1, 0), (1, 1), ()]
+
+# Add element(s)
+mylist.append(i) # only add one element
+mylist.extend(children) # iterate all the elements in children and add each element

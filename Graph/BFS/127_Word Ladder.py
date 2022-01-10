@@ -31,10 +31,17 @@ All the words in wordList are unique.
 """
 ########################################################
 #####################
+# Confirm:
+# beginWord does not need to be in wordList.
+# endWord has to be in the wordList, otherwise, return 0
+# endWord.length == beginWord.length
+# beginWord != endWord
+# All the words in wordList are unique
 """
 BFS: Using a dictionary to store the pattern: the words with same pattern(neighbors)
 """
-
+# The key is how to build the adjacent matrix/graph to traverse later
+# how to identify neighbors
 
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
