@@ -61,7 +61,24 @@ leetcode 102 & 103
 ### 3. Topological Sort:
 
 Find a global order for all nodes in a DAG(directed acyclic graph)
+1. calculate in-degree and out-degree for each point
+2. Put the point which does not have in-degree to queue, remove it from data structure and update the in-degree for the related points
+3. TIme complexity: O(V+E).
+4. Space complexity:  O(V+E).
+5. Convert edges(list of list) to Graph and **find the starting nodes whose degree is 0**
 
+        # Prepare the graph
+        adj_list = defaultdict(list)
+        indegree = {}
+        for dest, src in prerequisites:
+            adj_list[src].append(dest)
+
+            # Record each node's in-degree
+            indegree[dest] = indegree.get(dest, 0) + 1
+        # Queue for maintainig list of nodes that have 0 in-degree
+        zero_indegree_queue = deque([k for k in range(numCourses) if k not in indegree])
+    
 ### 4. Shortest Path in Simple Graph:
 
 注意这里一定要是简单图，也就是图中每条边长度都是1（或边长都相同）。为什么呢? 因为宽搜可以理解为一层层进行的，就跟二叉树遍历一样。要是层和层之间，或每层的长度都不一样，宽搜就没法进行了。通常这里简单图求最短路径用到BFS的都是无向图，极少数是有向图
+

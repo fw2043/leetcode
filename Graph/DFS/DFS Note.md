@@ -6,3 +6,7 @@
 2. Implement: Stack(First In Last Out, Last In First Out) & Recursive call(Recursive Stack)
 3. Time complexity: O(V + E),  We need to check every vertex and traverse through every edge in the graph.
 4. Space complexity: O(V)
+5. Steps:
+    
+    1. start from a starting node if you know start, otherwise check each node to go through dfs
+    2. dfs: find the ending case( if something return True or....)
