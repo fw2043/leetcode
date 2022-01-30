@@ -64,3 +64,12 @@ directions = [(0, 1), (0, -1), (1, 1), (-1, 1), (1, 0), (-1, 0), (1, 1), ()]
 # Add element(s)
 mylist.append(i) # only add one element
 mylist.extend(children) # iterate all the elements in children and add each element
+
+# shalow copy:
+res = []
+path = [1,2,3,4]
+res.append(path[:])
+print(res) # res = [[1,2,3,4]]
+# deep copy
+# assignment: res = path, Assignment with an = on lists does not make a copy.
+# Instead, assignment makes the two variables point to the one list in memory.

@@ -7,11 +7,12 @@ Output: [[3],[9,20],[15,7]]
 ##############################################################################
 #######################################
 """
-Method 1: using one queue: q
+Method 1:BFS
 """
 ## THe output format is List of List: [[3],[9,20],[15,7]]
 
-# Definition for a binary tree node.
+# Time complexity: O(n)
+# Space complexity: O(n)
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -46,3 +47,22 @@ class Solution:
                 res.append(level)
 
         return res
+
+# Method: DFS
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        levels = []
+
+        def helper(node, level):
+            if len(levels) == level:
+                levels.append([])
+            levels[level].append(node.val)
+            if node.left:
+                helper(node.left, level + 1)
+            if node.right:
+                helper(node.right, level + 1)
+
+        helper(root, 0)
+        return levels
