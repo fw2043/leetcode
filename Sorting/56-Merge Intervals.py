@@ -22,6 +22,9 @@ intervals[i].length == 2
 # start == previous end
 
 # definitely we need to sort the intervals:
+# how to sort a 2d list based on the first element: intervals.sort(key = lambda i : i[0])
+# how to initialize and store the output/result: output = [intervals[0]]
+# how to iterate the input: start, end in intervals[1:]
 # after sorting the list, there are 3 different possibilites:
 
 class Solution:

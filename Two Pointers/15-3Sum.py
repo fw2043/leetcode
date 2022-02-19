@@ -28,6 +28,8 @@ Constraints:
 # step 2: for each item nums[i], check two sums for left, right pointers:  O(n^2)
 # When three sums == target, how to update the pointers?---> only update one pointer, every loop only update one pointer
 # what if the element equal to the previous one # will give you duplicate result, so skip
+
+
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # Input: nums = [-1,0,1,2,-1,4]

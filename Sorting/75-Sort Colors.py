@@ -20,30 +20,33 @@ n == nums.length
 nums[i] is 0, 1, or 2.
 """
 # edge case: if only one color
+# Method 1:  3 colors/buckets, left: 0, right: 2, middle: 1, can we use two pointers to store and track left and right colors
+# and iterating the list, to decide if we need to put it to left or right
+#  nums = [2,0,2,1,1,0]
+# Method 2 Or use a dictionary, 0:2, 1:2, 2:2
+# then change the nums in place based on the dictionary
 
-# Partition method
+# Method 3: quick partition:
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
-        # global viarable
-        self.k = 0
         """
         Do not return anything, modify nums in-place instead.
         """
-        colors = [0, 1, 2]
-        # partition the list:
+
+        # bucket partition
+        def partition(val, nums):
+            nonlocal k
+            for i in range(len(nums)):
+                if nums[i] == val:
+                    nums[k], nums[i] = nums[i], nums[k]
+                    k += 1
+
+        k = 0
         color = 0
         while color <= 2:
-            self.partitionList(nums, color)
+            partition(color, nums)
             color += 1
 
-    def partitionList(self, nums: List[int], val):
-
-        for i in range(len(nums)):
-            # swap
-            if nums[i] == val:
-                nums[self.k], nums[i] = nums[i], nums[self.k]
-
-                self.k += 1
 
 # can we improve the method above to be: O(n) running time?
 # one-pass: 3 buckets---> two pointers, one points to left, and another to right
@@ -56,6 +59,7 @@ class Solution:
         # partition/ bucket sort
         l, r = 0, len(nums) - 1
         i = 0
+        # the condition: i < r
         while i <= r:
             # left bucket/case
             if nums[i] == 0:
@@ -68,7 +72,7 @@ class Solution:
                 nums[r], nums[i] = nums[i], nums[r]
                 r -= 1
                 # decrease r
-                # but not increase i, in case at the original r postition, it is 0,
+                # but not increase i, in case at the original r position, it is 0,
                 # then we have to swap it with l
             else:
                 i += 1

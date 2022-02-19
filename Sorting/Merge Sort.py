@@ -3,6 +3,7 @@
 # Space complexity is: O(n)
 # https://www.youtube.com/watch?v=TzeBrDU-JaY
 def merge_sort(nums):
+    # base case
     if len(nums) <= 1:
         return nums
     mid = len(nums) // 2

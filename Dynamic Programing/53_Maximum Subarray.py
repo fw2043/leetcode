@@ -31,13 +31,13 @@ try coding another solution using the divide and conquer approach, which is more
 # O(n^3)
 import math
 import List
-def maxSubArray(self, nums: List[int]) -> int:
-    n = len(nums)
-    for i in range(0,n-1):   # the start point
-        for j in range(0, n-1): # the end point
-        #           for k in range(i, j+1): # represent subarrays
-                   #     sum = nums[i] +......nums[j]
-# 两层 for 循环，每个循环处理中，又计算了子数组的和，所以叠加起来实际上是三层 for 循环。
+# def maxSubArray(self, nums: List[int]) -> int:
+#     n = len(nums)
+#     for i in range(0,n-1):   # the start point
+#         for j in range(0, n-1): # the end point
+#                   for k in range(i, j+1): # represent subarrays
+#                        sum = nums[i] +.....nums[j]
+# # 两层 for 循环，每个循环处理中，又计算了子数组的和，所以叠加起来实际上是三层 for 循环。
 
 # 前缀和优化 O(N^2)
 """既然复杂度太高，就要想方法区去降维，把三层 for 循环，降低到一层循环。换句话讲，就是要把循环处理中的冗余计算，给精简掉。

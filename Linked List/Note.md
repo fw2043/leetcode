@@ -30,17 +30,28 @@ If there is a cycle, the fast pointer will eventually meet with the slow pointer
 2. hash table:
 using a hash table to store node, not node.val, what if they have some values
 
-nodes_seen = set()
-
-while head is not None:
-
-    if head in nodes_seen:
-        return True
-    nodes_seen.add(head)
-    head = head.next    
-return False
+        nodes_seen = set()
+        
+        while head is not None:
+        
+            if head in nodes_seen:
+                return True
+            nodes_seen.add(head)
+            head = head.next    
+        return False
 
 ## https://leetcode.com/explore/learn/card/linked-list/214/two-pointer-technique/1216/
+
+## 7. Why do we usually need a dummy node?
+To deal with lots of edge case, for example insert a node before the head?
+How to set dummy node: dummy = ListNode(0, head)
+
+## 8. relink 3 node in the linked list:
+    prev.next = curr.next
+    curr.next = temp.next
+    temp.next = curr
+    # advance curr node
+    curr = prev.next
 
 
 

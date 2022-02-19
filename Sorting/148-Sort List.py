@@ -10,41 +10,45 @@ Constraints:
 The number of nodes in the list is in the range [0, 5 * 104].
 -105 <= Node.val <= 105
 """
-#### Can you sort the linked list in O(n logn) time: Merge sort and quick sort
-# long(n) memory: merge sort
-# O(1) memory (i.e. constant space)-------------> Quick sort
+# The result is still a linked list!
 
-##### Merge sort:
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Merge sort:
+# how to get middle for a linked list:
+# how to separate a linked list into 2:
+# how to merge two linked list:
+# to store a new linked list: dummy = tail = ListNode(), return dummy.next, use tail to traverse
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # sorting with O(nlogn) running time: merge sort and quick sort
 
-        # merge sort  O(nlogn) running time with O(n) momery
-
-        # get the middle:
         # base case:
         if not head or not head.next:
             return head
         # split the list into two halfs:
         left = head
+        # iniliaze right to middle node
         right = self.getMid(head)
+        # get mid: if the list is: 4 --> 2 --> 1 ---> 3, the mid == 2, but we want the right == 3!
+        # also we want separate them to two lists: 4 ---> 2(right) and 1 ---> 3
         tmp = right.next
-        right.next = None
+        right.next = None # to separate into two node
         right = tmp
 
         # divide:
         left = self.sortList(left)
         right = self.sortList(right)
+
         # conquar
         return self.merge(left, right)
 
-    # now we can writeh the functions getMid and merge
-    #
+    # now we can write the functions getMid and merge:
+    # get mid: if the length of list is even, the mid will be the first one, but we want the second one
+    # like: 4 --> 2 --> 1 ---> 3, the mid == 2, but we want the right == 3!
     def getMid(self, head):
         slow, fast = head, head.next
         while fast and fast.next:

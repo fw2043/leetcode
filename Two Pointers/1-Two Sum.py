@@ -25,6 +25,10 @@ Only one valid answer exists.
 """
 # answer can be any order
 #  assume: exactly one solution
+# can not sort the list, because you have to retun the indexes of the original list
+# use a hashmap to store the diff between each element and target, and check if the current element in the hashmap list
+
+
 # hashmap
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:

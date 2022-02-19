@@ -14,12 +14,40 @@ Constraints:
 1 <= k <= nums.length <= 104
 -104 <= nums[i] <= 104
 """
-# k is the  is the kth largest element in the sorted order
+# k is the kth largest element in the sorted order
 # what if only one element, the the length is smaller than k: 1 <= k <= nums.length <= 104
 # duplicates? ---> it is the kth largest element in the sorted order, not the kth distinct element.
+# Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+# Output: 4
+# Three method: quick sort, heap, quick selection
 
-# you might be able to use heap
+# Quick sort in descending order, then return nums[k-1]:
+# O(nlogn) in average case
+# O(n^2) in worst case
+# Space complexity is: O(1) in-place
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        self.quick_sort(nums, 0, len(nums) - 1)
+        return nums[k - 1]
 
+    def quick_sort(self, nums, l, r):
+        if l >= r:
+            return
+        p = self.partition(nums, l, r)
+        self.quick_sort(nums, l, p - 1)
+        self.quick_sort(nums, p + 1, r)
+
+    def partition(self, nums, l, r):
+        pivot = nums[r]
+        i = l - 1
+        for j in range(l, r):
+            if nums[j] >= pivot:
+                i += 1
+                nums[i], nums[j] = nums[j], nums[i]
+
+        nums[i + 1], nums[r] = nums[r], nums[i + 1]
+        return i + 1
+# Can we improve quick sort----> quick select?
 # the better one is: Quick Select
 # the average running time is O(N)
 # the worst case is O(n^2)---> pick the largest one as pivot
@@ -58,7 +86,12 @@ class Solution:
 
         return quickSelect(0, len(nums) - 1)
 
-#Todo: heap solution?
+# N-largest number----> heap(priority queue)
+# Time complexity: O(Nlogk).
+# Space complexity: O(k) to store the heap elements.
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return heapq.nlargest(k, nums)[-1]
 
 
 

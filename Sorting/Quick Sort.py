@@ -2,30 +2,36 @@
 # O(nlogn) in average case
 # O(n^2) in worst case
 # # Space complexity is: O(1) in-place
-## https://www.youtube.com/watch?v=COk73cpQbFQ
-# pivot--->partition into left and right sublist
-# sort the left and right sublist of the list
-# divide and conquar stratagy
-def quick_sort(nums):
-    n = len(nums)
+## https://www.youtube.com/watch?v=0SkOjNaO1XY
 
-    def quick(left, right):
-        if left >= right:
-            return nums
-        pivot = left
-        i = left
-        j = right
-        while i < j:
-            while i < j and nums[j] > nums[pivot]:
-                j -= 1
-            while i < j and nums[i] <= nums[pivot]:
-                i += 1
-            nums[i], nums[j] = nums[j], nums[i]
-        nums[pivot], nums[j] = nums[j], nums[pivot]
-        quick(left, j - 1)
-        quick(j + 1, right)
-        return nums
+# step1:pivot--->partition into left and right sublist
+# step2: sort the left and right sublist of the list
+# step3: divide and conquar stratagy
+# pivot is at the correct postition in the final, sorted array, all the items at left are smaller, at right are larger
 
-    return quick(0, n - 1)
+def partition(self, arr, l, r):
+    pivot = arr[r]
+    i = l - 1
+    # i always points to the last element less than pivot
+    # j is the current element we are examing
+    for j in range(l, r):
+        if arr[j] <= pivot:
+            # first increase i, then swap
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    # put pivot to the right postion
+    arr[i + 1], arr[r] = arr[r], arr[i + 1]
+    # return the index of pivot
+    return i + 1
 
 
+# the list between l and r will be sorted
+def quick_sort(self, arr, l, r):
+    # base case:
+    if l >= r:
+        return
+    p = self.partition(arr, l, r)
+    # the element at p is at the right order,
+    # so we only need to sort its left and right part
+    self.quick_sort(arr, l, p - 1)
+    self.quick_sort(arr, p + 1, r)
