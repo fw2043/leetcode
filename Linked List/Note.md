@@ -1,4 +1,4 @@
-#singly linked list
+# singly linked list
 ## 1. head to represent the whole list
 ## 2. traverse: O(N)
 If we want to get the ith element, we have to traverse from the head node one by one. It takes us O(N) time on average to visit an element by index, where N is the length of the linked list.
