@@ -20,7 +20,17 @@ To delete the current node, we have to find the previous node of the current nod
 ## 6. Delete the first node:
 head = head.next
 
-## 7. Cycle linked list: 
+## 7. Reverse linked list:
+        def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+            prev, curr = None, head
+            while curr:
+                temp = curr.next
+                curr.next = prev
+                prev = curr
+                curr = temp
+            return prev
+        
+## 8. Cycle linked list: 
 Method 1: two-pointer in linked list:
 If there is no cycle, the fast pointer will stop at the end of the linked list. 
 If there is a cycle, the fast pointer will eventually meet with the slow pointer.
@@ -42,11 +52,11 @@ using a hash table to store node, not node.val, what if they have some values
 
 ## https://leetcode.com/explore/learn/card/linked-list/214/two-pointer-technique/1216/
 
-## 8. Why do we usually need a dummy node?
+## 9. Why do we usually need a dummy node?
 To deal with lots of edge case, for example insert a node before the head?
 How to set dummy node: dummy = ListNode(0, head)
 
-## 9. Relink 3 node in the linked list:
+## 10. Relink 3 node in the linked list:
     prev.next = curr.next
     curr.next = temp.next
     temp.next = curr
