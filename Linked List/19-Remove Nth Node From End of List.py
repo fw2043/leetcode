@@ -9,45 +9,43 @@ Output: []
 Input: head = [1,2], n = 1
 Output: [1]
 """
-### One Pointer
+# Get the length(go through the list)
+# identify the previous node
+# previous.next = previous.next.next
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Can we optimize the slution above using one pass: Yes, find the left and right node of the deleted node
+# let left = dummy, right=head, then let right move n steps, then move right and left until right is null
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         size = 0
-        dummy = curr = ListNode(0, head)
+        dummy = prev = ListNode(0, head)
+        curr = head
         while curr:
             size += 1
             curr = curr.next
-
+        # find the previous
         step = size - n
-        prev = dummy
-        # get the previous node: 3
-        while step > 1:
-            step -= 1
+        while step > 0:
             prev = prev.next
-
-        # remove node 4:
-        # print(prev)
+            step -= 1
         prev.next = prev.next.next
-        # print(prev)
 
         return dummy.next
 
 
-# Two pointer( left and right to point to the left and right nodes of the delete one:
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Two pointer( left and right to point to the left and right nodes of the delete one):
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        size = 0
         dummy = left = ListNode(0, head)
         right = head
         # let right pointer to move n step

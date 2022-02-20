@@ -33,6 +33,7 @@ Both list1 and list2 are sorted in non-decreasing order.
 #         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        # the new linked list with two pointers:
         dummy = tail = ListNode(0, None)
 
         while list1 and list2:

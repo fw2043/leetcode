@@ -5,29 +5,34 @@ only nodes themselves may be changed.)
 Input: head = [1,2,3,4]
 Output: [2,1,4,3]
 """
+# dummy node to return the head
+# two pointers for swapping (firstNode and secondNode) and use head to go through each pair
+# first=head= 1, second = head.next = 2, then head=firs=3, second=4
 
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(0, head)
-        prev, curr = dummy, head
-        while curr and curr.next:
-            # save ptrs
-            nextpair = curr.next.next
-            second = curr.next
+        prev = dummy
+        while head and head.next:
+            # node to be swapped
+            firstNode = head
+            secondNode = head.next
 
-            # reverse this pair
-            second.next = curr
-            curr.next = nextpair
-            prev.next = second
+            # swap the node:
+            prev.next = secondNode
+            firstNode.next = secondNode.next
+            secondNode.next = firstNode
 
-            # update ptrs
-            prev = curr
-            curr = nextpair
-
+            # update head node:
+            prev = firstNode
+            head = prev.next
         return dummy.next
+

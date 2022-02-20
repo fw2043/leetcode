@@ -1,26 +1,26 @@
 # singly linked list
-## 1. head to represent the whole list
-## 2. traverse: O(N)
+## 1. Head to represent the whole list
+## 2. Traverse: O(N)
 If we want to get the ith element, we have to traverse from the head node one by one. It takes us O(N) time on average to visit an element by index, where N is the length of the linked list.
-## 3. add a node: **O(1)**
+## 3. Add a node: **O(1)**
 To add a node(curr) to the prev node:
 
 curr.next = prev.next; 
 
 prev.next = curr
 
-## 4. add a node at the beginning: **O(1)**
+## 4. Add a node at the beginning: **O(1)**
 curr.next = head
 
 head = curr
 
-## 5. delete a (curr) node: **O(N)**
+## 5. Delete a (curr) node: **O(N)**
 To delete the current node, we have to find the previous node of the current node: travese from the head:
 
-## 6. delete the first node:
+## 6. Delete the first node:
 head = head.next
 
-## 7. cycle linked list: 
+## 7. Cycle linked list: 
 Method 1: two-pointer in linked list:
 If there is no cycle, the fast pointer will stop at the end of the linked list. 
 If there is a cycle, the fast pointer will eventually meet with the slow pointer.
@@ -46,7 +46,7 @@ using a hash table to store node, not node.val, what if they have some values
 To deal with lots of edge case, for example insert a node before the head?
 How to set dummy node: dummy = ListNode(0, head)
 
-## 9. relink 3 node in the linked list:
+## 9. Relink 3 node in the linked list:
     prev.next = curr.next
     curr.next = temp.next
     temp.next = curr
