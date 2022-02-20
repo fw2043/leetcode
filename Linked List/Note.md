@@ -21,13 +21,13 @@ To delete the current node, we have to find the previous node of the current nod
 head = head.next
 
 ## 7. cycle linked list: 
-1. method: two-pointer in linked list
-If there is no cycle, the fast pointer will stop at the end of the linked list.
-
+Method 1: two-pointer in linked list:
+If there is no cycle, the fast pointer will stop at the end of the linked list. 
 If there is a cycle, the fast pointer will eventually meet with the slow pointer.
+
 **Attention: the ending condition**
 
-2. hash table:
+Method 2: hash table:
 using a hash table to store node, not node.val, what if they have some values
 
         nodes_seen = set()
