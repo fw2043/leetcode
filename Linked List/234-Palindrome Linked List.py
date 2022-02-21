@@ -10,13 +10,15 @@ The number of nodes in the list is in the range [1, 105].
 0 <= Node.val <= 9
 """
 
-##### Linear using list: space compleity and time complexity: O(N)
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Method 1: Linear using list: space compleity and time complexity: O(N)
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         arr = []
@@ -33,15 +35,17 @@ class Solution:
 
         return True
 
-### Two pointers:
-# Time complexity : O(n)O(n), where nn is the number of nodes in the Linked List.
-# Space complexity : O(1)O(1).
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Method 2: Two pointers:
+# Time complexity : O(n), where nn is the number of nodes in the Linked List.
+# Space complexity : O(1)
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         # Two pointers

@@ -30,7 +30,7 @@ head = head.next
                 curr = temp
             return prev
         
-## 8. Cycle linked list: 
+## 8. Cycle linked list: leetcode 141 and 142
 Method 1: two-pointer in linked list:
 If there is no cycle, the fast pointer will stop at the end of the linked list. 
 If there is a cycle, the fast pointer will eventually meet with the slow pointer.

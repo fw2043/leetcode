@@ -5,13 +5,13 @@ It is guaranteed that the node to be deleted is not a tail node in the list.
 Input: head = [4,5,1,9], node = 5
 Output: [4,1,9]
 """
+#  in place and can't access to head,
+#  the only accessable item is node.val and node.next ----> hint
 
-
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution:
     def deleteNode(self, node):
@@ -23,4 +23,4 @@ class Solution:
         node.val = node.next.val
         node.next = node.next.next
 
-# in place and can't access to head, the only accessable item is node.val and node.next ----> hint
+#

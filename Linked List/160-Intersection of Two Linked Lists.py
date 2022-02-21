@@ -21,12 +21,16 @@ Output: Intersected at '8'
 Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect).
 From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
 """
-### Using a set to store the visited list:
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+
+
+### Method 1 Intersetction: Using a set to store the visited node, then tranverse each list one by one to find the intersection
+# Time Complexity: O(m +n)
+# Space Complexity: O( max(n,m))
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
@@ -41,12 +45,19 @@ class Solution:
 
         return None
 
-## Two pointers
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+
+# Method 2:
+# Two pointers to traverse the lists
+# If they have same length, then you will meet at the first intersection
+# So find the diff and the longer one
+# Let the longer one move first diff steps
+# Time Complexity: O(m +n)
+# Space Complexity: O(1)
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
