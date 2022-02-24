@@ -19,21 +19,18 @@ move downwards: (row + 1, col)
 move left: (row, col - 1)
 move upwards: (row - 1, col)
 """
-# Time complexity: O(M \cdot N)O(M⋅N). This is because we visit each element once.
 
-# Space complexity: O(1), This is because we don't use other data structures.
 # Remember that we don't include the output array in the space complexity.
-
+# input matrix = [[1,2,3],[4,5,6],[7,8,9]]
+# go 1 ->2 ->3, reach out to right boundary could not have anymore,
+#  change direction, 3 -> 6 -> 9, reach out to the bottom boundary,
+# change direction, 9 can only go to 8, 8 -->7, reach out to left boundary
+# 7--> 4, then 1 is visited, so change direction
+# so from the example above:
+# we have to change left, right, bottom, top boundaries--->chop out the boundaries, narrow down the size
+# need to check the condition: left < right and top < bottom
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        # input matrix = [[1,2,3],[4,5,6],[7,8,9]]
-        # go 1 ->2 ->3, reach out to right boundary could not have anymore,
-        #  change direction, 3 -> 6 -> 9, reach out to buttom boundry,
-        # chagne direction, 9 can only go to 8, 8 -->7, rach out to left boundry
-        # 7--> 4, then 1 is visited, so change direction
-        # so from the exapmle above:
-        # we have to change left, ringht, buttom, top boundries--->chop out the boundries, narrow down the size
-
         res = []
         left, right = 0, len(matrix[0])
         top, bottom = 0, len(matrix)
@@ -65,3 +62,5 @@ class Solution:
 
         return res
 
+# Time complexity: O(M⋅N). This is because we visit each element once.
+# Space complexity: O(1), This is because we don't use other data structures.

@@ -36,7 +36,34 @@ Constraints:
 At most 100 calls will be made to push, pop, peek, and empty.
 All the calls to pop and peek are valid.
 """
-# Using popleft()
+# list can deal with all the functions, except pop()
+# how to deal with pop()?
+
+# 2. Using two stacks to track in and out stack:
+class MyQueue:
+
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+
+    def push(self, x: int) -> None:
+        while self.s1:
+            self.s2.append(self.s1.pop())
+        self.s1.append(x)
+        while self.s2:
+            self.s1.append(self.s2.pop())
+
+    def pop(self) -> int:
+        return self.s1.pop()
+
+    def peek(self) -> int:
+        return self.s1[-1]
+
+    def empty(self) -> bool:
+        return len(self.s1) == 0
+
+
+    # 1. Using built-in function: popleft()
 class MyQueue:
 
     def __init__(self):
@@ -58,5 +85,5 @@ class MyQueue:
         return self.length == 0
 
 
-#TODO: use two stakcs, not using popleft?
+
 

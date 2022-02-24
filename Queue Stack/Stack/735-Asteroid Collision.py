@@ -32,26 +32,32 @@ asteroids[i] != 0
 # Confirm if the element could be 0? No
 # use stack
 # need to consider when we should append to stack, when we should pop from stack
-
+# 1. first to identify the cases of collisions is the key
+# the collision happens when:
+# stack[-1] -----> (go right, positive), the asteroids[i] <------(go left, negative)
+# 2. when collision happens, what we should do? > 0, < 0, ==0
+# when to break the loop, when to continue the loop
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        # 1. first to identify the cases of collisions is the key
-        # the collision happens when:
-        # stack[-1] -----> (go right, positive), the asteroids[i] <------(go left, negative)
-        # 2. when collision happens, what we should do? > 0, < 0, ==0
         stack = []
-        for a in asteroids:
-            while stack and stack[-1] > 0 and a < 0:
-                diff = a + stack[-1]
-                if diff < 0:  # stack[-1] is detroyed
+        for new in asteroids:
+            # while collision:
+            while stack and new < 0 and stack[-1] > 0:
+                # if stack[-1] + new > 0: new explode, don't need to append
+                if stack[-1] + new < 0:
+                    # stack[-1] explode, add new into stack
                     stack.pop()
-                elif diff > 0:
-                    # a is destroyed
-                    a = 0
-                else:  # detroy both of them
-                    a = 0
+                    continue
+
+                elif stack[-1] + new == 0:
+                    # both of them explode, pop, but don't need to compare, don't need to add new---> break
                     stack.pop()
-            if a:  # won't add 0 into stack, because it means they were destroyed
-                stack.append(a)
+                    break
+                elif stack[-1] + new > 0:
+                    # new explode, don't need to pop, don't need to add new---> break
+                    break
+
+            else:
+                stack.append(new)
 
         return stack

@@ -32,28 +32,6 @@ At most 104 calls will be made to next.
 
 # Usually we use queue to stream data, first in first out.
 # Queue
-# Time complexity: O(n)
-# Space complexity: O(n)
-class MovingAverage:
-
-    def __init__(self, size: int):
-        self.q = deque()
-        self.size = size
-
-    def next(self, val: int) -> float:
-
-        # add elemenet
-        self.q.append(val)
-        # check if the len > size, if yes, pop
-        if len(self.q) > self.size:
-            self.q.popleft()
-        total = 0
-        for i in range(len(self.q)):
-            total += self.q[i]
-
-        return total / len(self.q)
-## Can we improve the code above?
-## adding count and window_sum into constructor , so we don't have to iterate the list
 # Time complexity: O(1)
 # Space complexity: O(n)
 class MovingAverage:
@@ -67,16 +45,17 @@ class MovingAverage:
         self.count = 0
 
     def next(self, val: int) -> float:
-        self.count += 1
-
         # add elemenet
         self.q.append(val)
+        self.count += 1
+        self.window_sum += val
+
         # check if the len > size, if yes, pop
-        first = 0
         if len(self.q) > self.size:
             first = self.q.popleft()
-        self.window_sum = self.window_sum - first + val
+            self.window_sum -= first
+            self.count -= 1
 
-        return self.window_sum / min(self.size, self.count)
+        return self.window_sum / self.count
 
 

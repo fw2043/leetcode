@@ -35,6 +35,8 @@ s only contains lower case English letters.
 # how to track the times each character we have seen?
 # ---->use a pair to store the value and the count of each character.
 # So instead of a normal stack list, we use list of list for the stack
+# why stack.append([c, 1]), not stack.append((c,1))====> the tuples are immutable objects the lists are mutable.
+
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
         # instead of a normal stack, we use pair in stack:

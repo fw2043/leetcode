@@ -29,21 +29,24 @@ s is guaranteed to be a valid input.
 All the integers in s are in the range [1, 300].
 """
 # All the integers in s are in the range [1, 300].
-# Nested brackets
+# could be nested brackets
+# Use a stack
+# when we should pop the characters?
+# put all the characters and digit to stack
+# if it is ], then pop all the characters until stack[-1] is '[', then pop all the digits
+# then process the substing, put it back to stack
+
 class Solution:
     def decodeString(self, s: str) -> str:
-        # could be nested bracktes
-        # Use a stack
         # input: 54[ab3[cd]]
-        # when we should pop the charecters?
         stack = []
         for i in range(len(s)):
             if s[i] != ']':  # stack = [5,4,'[',a, b,3, '[', c,d]
                 stack.append(s[i])
-            else:  # s[i] == ']'
+            else:  #
                 substr = ''
                 while stack[-1] != '[':
-                    substr = stack.pop() + substr  # put the new pop charater at the beginning
+                    substr = stack.pop() + substr  # put the new pop character at the beginning
                     # substr = [cd]
                 # pop opening bracket'[' out:
                 stack.pop()

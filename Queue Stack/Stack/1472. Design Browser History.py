@@ -45,6 +45,35 @@ At most 5000 calls will be made to visit, back, and forward.
 """
 # Because we have to forward, so can't use one stack, when we go back to pop from stack, we might need to forward later,
 # so have to use another stack to store the ones being popped(back)
+# when we visit a new one which is not in history, we have to reset another stack to be empty
+# when we backward, have to keep len(hist) > 1
+# Two stacks:
+class BrowserHistory:
+
+    def __init__(self, homepage: str):
+        self.hist = []
+        self.future = []
+        self.hist.append(homepage)
+
+    def visit(self, url: str) -> None:
+        # when we visit a new url, set future to []
+        self.hist.append(url)
+        self.future = []
+
+    def back(self, steps: int) -> str:
+        while steps > 0 and len(self.hist) > 1:
+            self.future.append(self.hist.pop())
+            steps -= 1
+        return self.hist[-1]
+
+    def forward(self, steps: int) -> str:
+        while steps > 0 and len(self.future) > 0:
+            self.hist.append(self.future.pop())
+            steps -= 1
+        return self.hist[-1]
+
+# Can we improve it by using one stack?
+#
 
 class BrowserHistory:
 

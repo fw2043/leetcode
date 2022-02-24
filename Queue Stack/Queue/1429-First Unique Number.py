@@ -29,7 +29,7 @@ firstUnique.showFirstUnique(); // return -1
 ####The key is to set Time complexity for showFirstUnique() to be constant?
 #Approach 1: Queue and HashMap of Unique-Status
 """
-The goal is to find a fast way o retrieve the first unique integer in the queue, not to add them to the queue!!
+The goal is to find a fast way to retrieve the first unique integer in the queue, not to add them to the queue!!
 1. This particular number has never been seen before now. 
 Add it to isUnique with a value of true. Also, add it to the queue.
 
@@ -42,7 +42,7 @@ with a value of false.
 This means that it has already been seen twice before. 
 We don't need to do anything, and shouldn't add it to the queue.-----> the goal is not about adding element
 """
-# Constructor: O(K)O(K).
+# Constructor: O(K).
 # Add(): Time complexity: O(1)
 # showFirstUnique(): O(1)
 # Space complexity: O(n)
@@ -57,6 +57,7 @@ class FirstUnique:
 
     def showFirstUnique(self) -> int:
         # remove all the nums which are not unique from left of queue until we meet the first unique value:
+        # the condition is self.q AND not true
         while self.q and not self.is_unique[self.q[0]]:
             self.q.popleft()
 
@@ -72,10 +73,11 @@ class FirstUnique:
         # case 2: it has been seen before but it is unique(True), change to false, but not need to add to queue
         elif self.is_unique[value] == True:
             self.is_unique[value] = False
-        # case 3: if it has been seen two times before(unique = false), do nothing
+        # case 3: if it has been seen two times before(unique = false):
+        # do nothing
 
 
-# Appraoch 3: Brute Forece---> bad idea
+# Appraoch 2: Brute Forece---> bad idea
 # Time complexity for showFirstUnique is O(n^2)
 class FirstUnique:
 

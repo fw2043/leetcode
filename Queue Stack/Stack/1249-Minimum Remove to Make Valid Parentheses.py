@@ -27,13 +27,18 @@ Explanation: An empty string is also valid.
 ## Need to confirm:
 # 1. the parenthese is only ( or )
 # only lowcase english letter
+# similar to valid parentheses problen: leetcode20
+# use stack to track the index of opening parentheses,
+# when we go through string, find closing parentheses,
+# then pop this previous opening one
+# string is immutable, so we have to convert it to a list, then modify the list
+# if we meet closing parentheses but don't have opening parentheses, then change closing one to empty in the list
+# last step is to check if stack is empty, if not, there are invalid opening parentheses, then change them to empty in the list
+
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        # similar to valid parentheses problen: leetcode20
-        # to keep track the nindex of opening parentheses,
-        # when we go through string, find closing parenthese,
-        # then pop this previous openning one
+
         # s = "lee(t(c)o)de)"
         stack = []
         N = len(s)

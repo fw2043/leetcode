@@ -38,29 +38,30 @@ Constraints:
 At most 100 calls will be made to push, pop, top, and empty.
 All the calls to pop and top are valid.
 """
-
+# Initialize a stack using deque()
+# push(), top() and empty() are easy
+# for pop() the last element:, we pop from left and add from right, except the last one
+# now the last one becomes the first one, we can do queue's pop
 
 class MyStack:
 
     def __init__(self):
         # initialize a queue
-        self.q = deque()
+        self.q = collections.deque()
 
     def push(self, x: int) -> None:
         self.q.append(x)
 
     def pop(self) -> int:
-        # for i in range(len(self.q) - 1):
-        #     self.push(self.q.popleft())
-        # return self.q.popleft()
+        # pop from left and add from right, except the last one
+        for i in range(len(self.q) - 1):
+            self.push(self.q.popleft())
+        # now the last one becomes the first one, so we can pop it
+        return self.q.popleft()
 
-        return self.q.pop()
 
     def top(self) -> int:
         return self.q[-1]
 
     def empty(self) -> bool:
         return len(self.q) == 0
-
-
-# initialize using deque(), then you can popleft() --->head/left, and pop()-----> tail/right

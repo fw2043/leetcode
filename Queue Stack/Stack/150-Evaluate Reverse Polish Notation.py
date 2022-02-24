@@ -35,12 +35,17 @@ Constraints:
 1 <= tokens.length <= 104
 tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
 """
-
+# tokens = ["4","13","5","/","+"]
+# (4 + (13 / 5)) = 6
+# go through each token, put the elements to stack if it is not an operator
+# if it is an operator, pop twice, but need to decide which one is first: 13/5
+# the resulst above has to be put back to the stack
+# if the token is an operator, then calculte the values (2 + 1) = 3, put 3 to the list, then 3,3,* ==> 9
+# need to pop and push---> stack
 
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        # if the token is an operator, then calculte the values (2 + 1) = 3, put 3 to the list, then 3,3,* ==> 9
-        # need to pop and push---> stack
+
         stack = []
         # ["4","13","5","/","+"]
         for token in tokens:

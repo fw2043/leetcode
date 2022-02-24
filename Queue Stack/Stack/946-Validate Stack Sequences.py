@@ -30,6 +30,8 @@ popped is a permutation of pushed.
 """
 # Unique value?
 # Same length? If not---> edge case
+# use stack and mimic stack process
+# check if we need to pop during pushing
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         # Input: pushed = [1,2,3,4,5], popped = [4,5,3,2,1]

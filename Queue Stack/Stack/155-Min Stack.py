@@ -35,10 +35,10 @@ Methods pop, top and getMin operations will always be called on non-empty stacks
 At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
 """
-## confirm the request is to retrieve the minimum element in constant time -->O(n)
+## confirm the request is to retrieve the minimum element in constant time -->O(1)
 ## only to return the min element, it does not remove items from the MinStack.
 ### Consider each node in the stack having a minimum value
-## Two stack, one to store the elements, one to store the min element at the same position
+## Two stacks(using list to store), one to store the elements, one to store the min element at the same position
 # so we have to update both of them when we pop and push
 class MinStack:
 
