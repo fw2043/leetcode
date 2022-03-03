@@ -29,7 +29,6 @@ lRUCache.get(1);    // return -1 (not found)
 lRUCache.get(3);    // return 3
 lRUCache.get(4);    // return 4
 
-
 Constraints:
 1 <= capacity <= 3000
 0 <= key <= 104
@@ -41,6 +40,8 @@ At most 2 * 105 calls will be made to get and put.
 # The OrderedDict was designed to be good at reordering operations
 # move_to_end(key, last=True)
 # popitem(last=True)
+
+# method 1
 class LRUCache:
 
     def __init__(self, capacity: int):
