@@ -43,6 +43,38 @@ class Solution:
                     matrix[r][c] = 0
 
 # Approach 2: O(1) Space, Efficient Solution
-#TODO?
+# The idea is that we can use the first cell of every row and column as a flag.
+# This flag would determine whether a row or column has been set to zero.
+# This means for every cell instead of going to M+N cells and setting it to zero we just set the flag in two cells.
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        rows, cols = len(matrix), len(matrix[0])
 
+        # determine which row/col need to be zero, also check if the first row and first col should be zero or not?
+        row_flag = col_flag = False
+        for i in range(rows):
+            for j in range(cols):
+                if matrix[i][j] == 0:
+                    if i == 0:
+                        row_flag = True
+                    if j == 0:
+                        col_flag = True
 
+                    elif i != 0 and j != 0:
+                        matrix[i][0] = 0
+                        matrix[0][j] = 0
+
+        for i in range(1, rows):
+            for j in range(1, cols):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+
+        if row_flag:  # the first row should be zero
+            matrix[0] = [0] * cols
+
+        if col_flag: # the first col should be zero
+            for r in range(rows):
+                matrix[r][0] = 0

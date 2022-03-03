@@ -24,10 +24,17 @@ Constraints:
 strs[i] consists of lowercase English letters.
 """
 # Confirm: does the order of my output matter? No
+# what the commons between the same group of anagrams: same characters,
+# so if we sort them in order, then they become same string====> sort them
+# dict: use the sorted str as key, and append the strings into same key
+# return values of the dict: dict.values()
+
+
 # Approach 1: Sort them
 # if we sort them like eat and tea --> aet
-# Time complexity: O(nlogn)
-# Space complexy:  O(nlogn)
+# Time Complexity: O(N*KlogK), where N is the length of strs, and Kis the maximum length of a string in strs.
+# The outer loop has complexity O(N) as we iterate through each string. Then, we sort each string in O(KlogK) time.
+# Space Complexity: O(NK), the total information content stored in ans.
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:

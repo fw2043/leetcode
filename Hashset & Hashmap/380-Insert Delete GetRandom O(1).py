@@ -38,6 +38,7 @@ There will be at least one element in the data structure when getRandom is calle
 # In average O(1) time complexity.
 
 # Approach: Use random.choice(list) method
+import random
 class RandomizedSet:
 
     def __init__(self):
@@ -59,6 +60,11 @@ class RandomizedSet:
     def getRandom(self) -> int:
         # print(self.items)
         return random.choice(list(self.items.keys()))
+# Different time complexity using different data structures to implement:
+# insert/delete/get item:
+# to check if the element exits or not: dict: O(1), array: O(n)
+#https://leetcode.com/problems/insert-delete-getrandom-o1/discuss/455253/Python-or-Super-Efficient-or-Detailed-Explanation
+
 
 # Approach: hashmap and list
 # Hashmap/dict
@@ -95,13 +101,14 @@ class RandomizedSet:
         last_element = self.list[-1]
         indx = self.dict[val]
         self.list[indx], self.dict[last_element] = last_element, indx
-        # delete the last element:
+        # delete the last element: O(1)
         self.list.pop()
-        del self.dict[val]
+        self.dict.pop(val)
         return True
 
     def getRandom(self) -> int:
-        return choice(self.list)
+        # import random
+        return random.choice(self.list)
 
 
 

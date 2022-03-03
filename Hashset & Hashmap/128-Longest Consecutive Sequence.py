@@ -18,15 +18,16 @@ Constraints:
 """
 # What if the length is 1 or empty ---> edge cases
 # Is there any duplicate? YES, for example:
-# Are they all postive intergers? or could be negative?  ---> Yes
+# Are they all positive integers? or could be negative?  ---> Yes
 
 # If we try to sort them first, even quick sort still takes O(nlogn), but we need to run in O(n) time!
+# use hashset to get all unique nums
+# find the start num of the sequence, then check if we can find next(+1) and next.etc until next is not in set
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         # input: nums = [100,4,200,1,3,2]
-        # use hashset to get all unique nums
-        # find the start num of the sequence, then check if we can find next(+1) and next.etc until next is not in set
+
         num_set = set(nums)
         length = 0
         for num in nums:
