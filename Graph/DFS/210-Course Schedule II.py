@@ -42,6 +42,42 @@ All the pairs [ai, bi] are distinct.
 # how to detect cycle? current path has cycle(use curr_path to store the
 # end case: visited
 # Time complexity: O(E+V)
+
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        preMap = {c: [] for c in range(numCourses)}
+        for crs, prep in prerequisites:
+            preMap[crs].append(prep)
+
+        # if the crs has been added to the output
+        visited = set()
+        # the crs has been in the cycle: 0---> 1 --->2 --->0
+        cycle = set()
+
+        output = []
+        def dfs(crs):
+            if crs in cycle:
+                return False
+            if crs in visited:
+                return True
+            cycle.add(crs)
+            for prep in preMap[crs]:
+                if not dfs(prep):
+                    return False
+            cycle.remove(crs)
+            visited.add(crs)
+            output.append(crs)
+            return True
+
+        for c in range(numCourses):
+            if not dfs(c):
+                return []
+        return output
+
+
+
+
+
 class Solution:
 
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:

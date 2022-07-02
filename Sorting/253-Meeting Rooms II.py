@@ -38,7 +38,7 @@ class Solution:
                 # there is a meeting starts before a meeting ends
                 count += 1
                 s += 1
-            else:  # there is a meetind end
+            else:  # there is a meeting end
                 count -= 1
                 e += 1
             res = max(res, count)
@@ -46,5 +46,16 @@ class Solution:
         return res
 
 # Heap solution:
-
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key=lambda x: x[0])
+        heap = []  # stores the end time of intervals
+        for i in intervals:
+            if heap and i[0] >= heap[0]:
+            # means two intervals can use the same room
+                heapq.heapreplace(heap, i[1])
+            else:
+                # new room is located
+                heapq.heappush(heap, i[1])
+        return len(heap)
 

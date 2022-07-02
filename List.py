@@ -73,3 +73,16 @@ print(res) # res = [[1,2,3,4]]
 # deep copy
 # assignment: res = path, Assignment with an = on lists does not make a copy.
 # Instead, assignment makes the two variables point to the one list in memory.
+
+
+# reverse sort:
+res.sort(reverse=True)
+
+# remove fynction to remove the first matched value in the list
+my_list = [1,0,2,0,2,7,0,12,15]
+for i in my_list:
+    if i == 0:
+        # remove the first value in the list
+        my_list.remove(0)
+        my_list.append(0)
+        print(my_list)

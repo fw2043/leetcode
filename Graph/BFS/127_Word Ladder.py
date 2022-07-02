@@ -76,5 +76,7 @@ class Solution:
             result += 1
 
         return 0
-
+# Time Complexity: O(M^2 * N),
+# where MM is the length of words and NN is the total number of words in the input word list.
+#  Sopace complexity: same to time complexity
 

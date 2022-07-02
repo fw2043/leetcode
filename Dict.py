@@ -59,3 +59,30 @@ for i in range(n):
         d = manhattan(points[i], points[j])
         c[i].append((d, j))
         c[j].append((d, i))
+# dict:
+dict.items() # [(key, value), (...)]
+dict.keys() # [key...]
+dict.values() # [value...]
+
+
+# Sort a dict by key
+key_value = {2: 56, 1: 2, 5: 12, 4: 24, 6: 18, 3: 323}
+# the return value for sorted(key_value) is the list of the keys: [1, 2, 3, 4, 5, 6]
+for i in sorted(key_value):
+    print(i, key_value[i])
+sorted(key_value, reverse = True) # [6, 5, 4, 3, 2, 1]
+# sort by value: [(1, 2), (5, 12), (6, 18), (4, 24), (2, 56), (3, 323)]
+list = sorted(key_value.items(), key=lambda item: item[1])
+# items will be a list: [(2, 56), (1, 2), (5, 12), (4, 24), (6, 18), (3, 323)]
+# item[1] means value, item[0] means key
+for key, value in sorted(key_value, key=lambda item: item[1]):
+    print((key, value))
+
+# Combine the values of two dictionaries having same key
+from collections import Counter
+ini_dictionary1 = Counter({'nikhil': 1, 'akash' : 5,'manjeet' : 10, 'akshat' : 15})
+ini_dictionary2 = Counter({'akash' : 7, 'akshat' : 5,'m' : 15})
+
+ #combining dictionaries
+# using Counter
+final_dictionary = ini_dictionary1 + ini_dictionary2

@@ -6,6 +6,7 @@ Input: head = [4,5,1,9], node = 5
 Output: [4,1,9]
 """
 #  in place and can't access to head,
+# what if it is the tail node?
 #  the only accessable item is node.val and node.next ----> hint
 
 class ListNode:

@@ -37,17 +37,18 @@ nums2.length == n
 # merge in reverse order, update from the last of nums1:
 
 #### they are sorted array---->
-class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        """
-        Do not return anything, modify nums1 in-place instead.
-        """
-        #  [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+#  [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
         # nums1 and nums2 are sorted, and nums1 has enough space for adding nums2
         # ---> put items in nums2 to nums1 backfoward,  [1,2,3,0,0,6], [2,5]
         # 6 > 3, so put 6 to last one,
         # 5 > 3, put 5 to the second last one
         # 2 < 3, then have to find right one t
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+
 
         # last index of nums1
         write_pointer  = m + n - 1
@@ -68,3 +69,19 @@ class Solution:
             n -= 1
             write_pointer  -= 1
 
+# Heap
+# Time complexity: O(log(m+n)
+# space complexity: O(log(n+m))
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        h = list()
+        for i in range(m):  #O(logm)
+            heapq.heappush(h, nums1[i])
+        for i in range(n):  #O(logn)
+            heapq.heappush(h, nums2[i])
+        for i in range(n + m): # O(log(n+m))
+            nums1[i] = heapq.heappop(h)
+        return nums1

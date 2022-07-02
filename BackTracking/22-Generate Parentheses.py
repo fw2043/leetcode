@@ -19,6 +19,11 @@ Constraints:
 # 2. only add opening parentheses if the number of opening < n
 # 3. only add closing closing parentheses if the number of closing < the number of opening
 
+###########################Note Note Notr
+# if you use list to store the progress, you need to call list.pop(0 to return back to the previous step(back track)
+########################################
+
+
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         stack = []
@@ -40,3 +45,21 @@ class Solution:
         backTracking(0, 0)
         return res
 
+# using a internal parameter to store the current S, then don't need to pop:
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+
+        def backtracking(openN, closeN, S):
+            #
+            # base population
+            if openN == closeN == n:
+                res.append(S)
+                return
+            if openN < n:
+                backtracking(openN + 1, closeN, S + "(")
+            if closeN < openN:
+                backtracking(openN, closeN + 1, S + ")")
+
+        backtracking(0, 0, '')
+        return res

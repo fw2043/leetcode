@@ -19,6 +19,7 @@ It is guaranteed that the answer is unique.
 
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 """
+# ege case: k = len(nums)
 # Heap:
 # Time complexity: O(Nlogk)
 # Space complexity:O(N+k)
@@ -39,14 +40,15 @@ class Solution:
 
 
 # Bucket sort:
+# bucket sort: count each item occurs
+# the worst case, every nums only appears once, so the length of bucket(count[i]) == length of the nums
+# for example: [1,2,3,4,5,6,7,8,....100]
+# a dict to count each item occurs
 # Time complexity: O(n)
 # Space complexity: O(n)
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # bucket sort: count each item occurs
-        # the worst case, every nums only appears once, so the length of bucket(count[i]) == length of the nums
-        # for example: [1,2,3,4,5,6,7,8,....100]
-        # a dict to count each item occurs
+
         count = {}
         #
         freq = [[] for i in range(len(nums) + 1)]

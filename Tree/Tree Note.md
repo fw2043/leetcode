@@ -6,13 +6,13 @@
 1. there are n-1 edges for tree with n nodes
 2. there is no cycle
 # Spanning tree of a graph
-1. Mininum spanning tree qeustion,  it can be solved using either Kruskal or Prim's algorithm
+1. Mininum spanning tree question,  it can be solved using either Kruskal or Prim's algorithm
 2. Prim's algorithm,  takes O(NlgN) but the whole solution is dominated by O(N*N) due to graph creation (nested loop)
 # Traverse a Tree
-1. Pre-order Traversal: root, left, right
-2. In-order Traversal: let, root, right ====> binary search tree
-3. Post-order Traversal: left, right, root ====> delete node, mathematical expression(using stack)
-4. Level-order Traversal: leetcode 102, 107, 103, min/max depth of binary tree: 
+1. Pre-order Traversal: root, left, right ===> leetcode 144
+2. In-order Traversal: let, root, right ====> binary search tree ====> leetcode 94, 230
+3. Post-order Traversal: left, right, root ====> delete node, mathematical expression(using stack) ===> leetcode 145
+4. Level-order Traversal: leetcode 102, 107, 103, 199, and min/max depth of binary tree: 
         
         标记层:
         class Solution:
@@ -29,7 +29,7 @@
                 # 遍历当前层的所有节点
                 for _ in range(size):
                     node = queue.popleft()
-                    if (step == k) ans.append(node)
+                    if (step == k): ans.append(node)
                     if node.right:
                         queue.append(node.right)
                     if node.left:
@@ -56,11 +56,13 @@
                         queue.append(node.left)
                 return -1
 
-5. Vertical traversal:Level-order Traversal + hash table, leetcode 314, 543
-6. 所有搜索类的题目只要把握三个核心点，即开始点，结束点 和 目标即可。
+5. Vertical traversal: Level-order Traversal + hash table, leetcode 314, 543
+
+6. 所有搜索类的题目只要把握三个核心点，即开始点，结束点 和 目标即可。====> leetcode 236, 230
 
 DFS 搜索类的基本套路就是从入口开始做 dfs，然后在 dfs 内部判断是否是结束点，
-这个结束点通常是叶子节点或空节点，关于结束这个话题我们放在七个技巧中的边界部分介绍，如果目标是一个基本值（比如数字）直接返回或者使用一个全局变量记录即可，如果是一个数组，则可以通过扩展参数的技巧来完成
+这个结束点通常是叶子节点或空节点，关于结束这个话题我们放在七个技巧中的边界部分介绍，
+如果目标是一个基本值（比如数字）直接返回或者使用一个全局变量记录即可，如果是一个数组，则可以通过扩展参数的技巧来完成
 
         DFS 套路模板：
             # 其中 path 是树的路径， 如果需要就带上，不需要就不带
@@ -94,7 +96,7 @@ DFS 搜索类的基本套路就是从入口开始做 dfs，然后在 dfs 内部�
  # Construct binary tree given two orders: leetcode 105, 106, 889:
  Key: determine the left, the length of all orders are same!
  
- #Sum: leetcode 129, 124, 112, 113, 437
+ # Sum: leetcode 129, 124, 112, 113, 437
         而有时候，我们需要 dfs 携带更多的有用信息。典型的有以下三种情况：
     携带父亲或者爷爷的信息。
         def dfs(root, parent):
@@ -122,12 +124,16 @@ DFS 搜索类的基本套路就是从入口开始做 dfs，然后在 dfs 内部�
  
  # Populating/ Modification: 
  leetcode 116, 117
+
  # Special cases: 
- same tree(leetcode 100) and symmetric tree(leetcode 101)
+ same tree(leetcode 100) and symmetric tree(leetcode 101), subtree of another tree(leetcode 572)
+ 
+ 
  # Serialize and Deserialize Binary Tree:
  leetcode 297, 428, 449
 
- # Binaru search tree or balanced binary tree:
+ # Binaru search tree or balanced binary tree: 
+ leetcode 98, 110
             
 
 

@@ -23,8 +23,10 @@ Constraints:
 1 <= k <= points.length <= 104
 -104 < xi, yi < 104
 """
-# Minheap:
-# Time complexity: Klogn
+# Top K problem: minHeap
+# How to store the result?: [dist, x, y]
+
+# Time complexity: Klogn for heappop on n elements
 # Space complexity: O(K)
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
@@ -32,9 +34,9 @@ class Solution:
         for x, y in points:
             dist = (x ** 2) + (y ** 2)
             minHeap.append([dist, x, y])
-        heapq.heapify(minHeap)
+        heapq.heapify(minHeap)  # o(n)
         res = []
-        while k > 0:
+        while k > 0: # k* logn
             dist, x, y = heapq.heappop(minHeap)
             res.append([x, y])
             k -= 1

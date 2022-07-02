@@ -57,11 +57,12 @@ class Solution:
 
             leftMax = dfs(root.left)
             rightMax = dfs(root.right)
-            # negative
+
+            # if negative value, then 0
             leftMax = max(leftMax, 0)
             rightMax = max(rightMax, 0)
 
-            # comute max path sum with split: split (15 + 20 + 7)
+            # compute max path sum with split: split (15 + 20 + 7)
             res = max(res, leftMax + root.val + rightMax)
 
             # return root + either left or right: max(root+left, root+right) return to the parent

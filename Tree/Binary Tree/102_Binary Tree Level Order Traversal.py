@@ -20,33 +20,28 @@ class TreeNode:
         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        res = []
-        # create a queue
-        q = collections.deque()
-        # initialize to root
-        q.append(root)
-
+        if not root:
+            return []
+        # deque, first in first out
+        q = collections.deque([root])
+        levels = []
+        steps = 0
         while q:
-            # print(len(q), q)
-            qLen = len(q)  # for each iteration, the length will be 1, 2, 4, 4 as it is appending more values
-            # 1: 3
-            # 2: 9, 20
-            # 4: null, null, 15,7
-            # 4: null,null,null,null
+            size = len(q)
             level = []
-            for i in range(qLen):
+            # go through the current level
+            for i in range(size):
                 node = q.popleft()
-                # print(i, node)
-
-                if node:
-                    level.append(node.val)
+                level.append(node.val)
+                if node.left:
                     q.append(node.left)
+                if node.right:
                     q.append(node.right)
-            # print(level)
-            if level:
-                res.append(level)
-
-        return res
+            # update level and res
+            levels.append(level)
+            steps += 1
+        #print(steps)
+        return levels
 
 # Method: DFS
 class Solution:

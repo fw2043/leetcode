@@ -49,11 +49,14 @@ def loevel_order_tree(root):
     return xxxx
 
 ##############################
-# For Graph
+# For Graph:
+# examples:
 #################################################
 
 """
-不需要分层遍历
+不需要分层遍历:
+leetcode 1971, 
+# DAG, no need to have seen, 797
 """
 def bfs_graph(root):
     if not root:
@@ -75,7 +78,8 @@ def bfs_graph(root):
     return xxxx
 
 """
-需要分层遍历
+需要分层遍历:
+shortest path: 1091
 """
 def bsf_graph(root):
     if not root:

@@ -1,0 +1,27 @@
+1
+54
+362
+387
+529
+151
+3 very important
+find the first unique item in a list
+485, 487, 1004, 1493 very important
+20
+convert string to int/float?
+509
+146
+# Sum of Fibonacci Numbers: https://www.geeksforgeeks.org/sum-fibonacci-numbers/
+def calculateSume(n):
+    if n <= 0:
+        return 0
+    fibo = [0]* (n+1)
+    fibo[1] = 1
+    sum = fibo[0] + fibo[1]
+    for i in range(2, n+1):
+        fibo[i] = fibo[i-2] + fibo[i-1]
+        sum = sum + fibo[i]
+    return sum
+
+ # https://www.geeksforgeeks.org/prefix-postfix-conversion/
+ 150

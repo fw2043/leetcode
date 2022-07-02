@@ -34,9 +34,11 @@ There are no duplicate edges.
 There are no self edges.
 """
 # DFS:
+# Recursion without stack
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
         # n = 3, edges = [[0,1],[1,2],[2,0]], start = 0, end = 2
+        #
         g = defaultdict(list[int])  # g = {0: [1, 2], 1: [0], 2: [0]....}
         for s, e in edges:  # bi-directional
             g[s].append(e)
@@ -54,24 +56,35 @@ class Solution:
             return False
 
         return dfs(start, end)
-#BFS:
+
+# Stack solution:
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
-        # n = 3, edges = [[0,1],[1,2],[2,0]], start = 0, end = 2
-        g = defaultdict(list[int])  # g = {0: [1, 2], 1: [0], 2: [0]....}
-        for s, e in edges:  # bi-directional
-            g[s].append(e)
-            g[e].append(s)
 
-        q = deque([start])
+        adjacency_list = [[] for _ in range(n)]
+        for a, b in edges:
+            adjacency_list[a].append(b)
+            adjacency_list[b].append(a)
+
+        stack = [start]
         seen = set()
-        while q:
-            node = q.popleft()
+
+        while stack:
+            # Get the current node.
+            node = stack.pop()
+
+            # Check if we have reached the target node.
             if node == end:
                 return True
+
+            # Check if we've already visited this node.
             if node in seen:
                 continue
             seen.add(node)
-            for i in g[node]:
-                q.append(i)
+
+            # Add all neighbors to the stack.
+            for neighbor in adjacency_list[node]:
+                stack.append(neighbor)
+
+        # Our stack is empty and we did not reach the end node.
         return False

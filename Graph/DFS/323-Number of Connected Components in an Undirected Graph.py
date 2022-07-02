@@ -21,9 +21,54 @@ edges[i].length == 2
 ai != bi
 There are no repeated edges.
 """
-# Todo
-# This is Disjoint set ===> unionFind
-#
+
+# connectivity of components
+# disjoint set: union find
+# initilaize: O(n)
+# find: O(logn)
+# union: O(logn)
+class UnionFind:
+    def __init__(self, size):
+        self.root = [i for i in range(size)]
+        self.rank = [1] * size
+        self.count = size
+
+    def Find(self, x):
+        if x == self.root[x]:
+            return x
+        self.root[x] = self.Find(self.root[x])
+        return self.root[x]
+
+    def Union(self, x, y):
+        rootX = self.Find(x)
+        rootY = self.Find(y)
+
+        if rootY != rootX:
+            if self.rank[rootX] > self.rank[rootY]:
+                self.root[rootY] = rootX
+
+            elif self.rank[rootY] > self.rank[rootX]:
+                self.root[rootX] = rootY
+            else:
+                self.root[rootY] = rootX
+                self.rank[rootX] += 1
+
+            self.count -= 1
+
+    def getCount(self):
+        return self.count
+
+
+class Solution:
+    def countComponents(self, n: int, edges: List[List[int]]) -> int:
+        uf = UnionFind(n)
+
+        for e in edges:
+            uf.Union(e[0], e[1])
+
+        return uf.getCount()
+
+
 
 
 

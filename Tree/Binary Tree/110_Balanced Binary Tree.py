@@ -9,13 +9,8 @@ The number of nodes in the tree is in the range [0, 5000].
 -104 <= Node.val <= 104
 """
 ################################################################################
-#### Approach 1: Top-down recursion: Time complexity: O(n), space: O(n)
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+#### Approach 1:
+# Top-down recursion: Time complexity: O(nlogn)
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
         # approach 1: top-down
@@ -37,26 +32,15 @@ class Solution:
 
 ##########################################################################################
 # Bottom-up recursion
+# Time complexity: O(n), space: O(n)
 class Solution:
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        # Bottom-up recursion
-        return self.isBalancedHelper(root)[0]
+        def dfs(root):
+            if not root:
+                return (True, -1)
+            left, right = dfs(root.left), dfs(root.right)
+            balanced = (left[0] and right[0] and abs(left[1] - right[1]) <= 1)
+            return (balanced, max(left[1], right[1]) + 1)
 
-    def isBalancedHelper(self, root: TreeNode) -> (bool, int):
-        # An empty tree is balanced and has height -1
-        if not root:
-            return True, -1
-
-        # Check subtrees to see if they are balanced:
-        leftIsBalanced, leftHeight = self.isBalancedHelper(root.left)
-        if not leftIsBalanced:
-            return False, 0
-
-        rightIsBalanced, rightHeight = self.isBalancedHelper(root.right)
-        if not rightIsBalanced:
-            return False, 0
-        # If the subtrees are balanced, check if the current tree is balanced using their height:
-        return (abs(leftHeight - rightHeight) < 2), 1 + max(leftHeight, rightHeight)
-
-
+        return dfs(root)[0]
 

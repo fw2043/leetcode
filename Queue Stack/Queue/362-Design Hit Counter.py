@@ -52,4 +52,9 @@ class HitCounter:
 
         return len(self.store)
 
-#TODO: Follow up: What if the number of hits per second could be huge? Does your design scale?
+# Follow up: What if the number of hits per second could be huge? Does your design scale?
+# Use circular list of buckets to handle large amount of hits. Python
+# Create bucket for each second (total 300 buckets) using circular list.
+# Subtract total hit count once you catch up with the tail.
+
+# LinkedHashMap<Integer time, Integer count> to record hits.

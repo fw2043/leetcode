@@ -4,21 +4,25 @@
 According to Wikipedia, a Heap is a special type of binary tree. A heap is a binary tree that meets the following criteria:
 
 Is a complete binary tree;
+
 The value of each node must be no greater than (or no less than) the value of its child nodes.
 A Heap has the following properties:
 
-Insertion of an element into the Heap has a time complexity of O(logN);
-Deletion of an element from the Heap has a time complexity of O(logN);
-The maximum/minimum value in the Heap can be obtained with O(1) time complexity.
+1. Insertion of an element into the Heap has a time complexity of O(logN);
+
+2. Deletion of an element from the Heap has a time complexity of O(logN);
+
+3. The maximum/minimum value in the Heap can be obtained with O(1) time complexity.
 
 # Python buit-in module
 1. headq: min-heap, start from index = 0
 
 2. method:
 
-convert a list to a heap: heapq.heapify()
+    convert a list to a heap: 
+    heapq.heapify()
     
-    li = [5, 7, 9, 1, 3]
+    list = [5, 7, 9, 1, 3]
     
     heapq.heapify(list)
 
