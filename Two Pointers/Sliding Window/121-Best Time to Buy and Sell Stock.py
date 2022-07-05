@@ -25,6 +25,7 @@ Constraints:
 # Confirm that: If you cannot achieve any profit, return 0.
 # Two pointers
 # when and how to move the slow pointer?
+#Time complexity: O(N)
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         buy, sell = 0, 1

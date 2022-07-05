@@ -73,5 +73,5 @@ class LRUCache:
 
 
 # Approach 2:
-#TODO: double linked list?
+#TODO: hashmap to store the key,value and double linked list to store least recent used and most recent used?
 

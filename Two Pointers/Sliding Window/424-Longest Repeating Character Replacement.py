@@ -25,7 +25,8 @@ s consists of only uppercase English letters.
 # substring, not sequence
 # consists only uppercase english letters
 # at most k times, could be less than k
-# The key is to identify the valid window: (r - l + 1) - max(count.values()) <= k
+# change the most frequent character---> how to find the most frequent one: hashmap to count
+# The key is to identify the valid window: the length of window(r - l + 1) - the most frequenct character is: max(count.values()) <= k
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         # edge case:

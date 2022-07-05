@@ -14,7 +14,7 @@ curr.next = head
 
 head = curr
 
-## 5. Delete a (curr) node: **O(N)**
+## 5. Delete a (curr) node: **O(N)**: leetcode 237
 To delete the current node, we have to find the previous node of the current node: travese from the head:
 
 ## 6. Delete the first node:

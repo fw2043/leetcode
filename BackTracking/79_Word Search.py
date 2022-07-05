@@ -49,7 +49,7 @@ class Solution:
             if r < 0 or c < 0 or r >= rows or c >= cols or board[r][c] != word[i] or (r, c) in path:
                 return False
             path.add((r, c))
-            # 4 directions check:
+            #  horizontally or vertically: 4 directions check:
             res = dfs(r + 1, c, i + 1) or dfs(r - 1, c, i + 1) or dfs(r, c - 1, i + 1) or dfs(r, c + 1, i + 1)
             path.remove((r, c))
             return res

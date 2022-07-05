@@ -27,6 +27,10 @@ Constraints:
 -109 <= target <= 109
 Only one valid answer exists.
 """
+# follow up what if the list is sorted: leetcode 167: two pointers
+
+
+
 # Conform that there is alway one and only one valid answer
 # You may not use the same element twice.
 # Approach 1: Brute Force: O(n^2)

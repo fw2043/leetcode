@@ -132,7 +132,7 @@ DFS 搜索类的基本套路就是从入口开始做 dfs，然后在 dfs 内部�
  # Serialize and Deserialize Binary Tree:
  leetcode 297, 428, 449
 
- # Binaru search tree or balanced binary tree: 
+ # Binary search tree or balanced binary tree: 
  leetcode 98, 110
             
 

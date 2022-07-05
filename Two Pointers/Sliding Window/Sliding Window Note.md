@@ -34,4 +34,5 @@
                 longest = max(longest, fast - slow + 1)
             fast += 1
         return longest
-        
+
+3. Youtube expalination: https://www.youtube.com/watch?v=nKhteIRZ2Ok

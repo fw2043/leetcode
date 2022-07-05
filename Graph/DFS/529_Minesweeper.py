@@ -42,8 +42,10 @@ click.length == 2
 0 <= clickc < n
 board[clickr][clickc] is either 'M' or 'E'.
 """
-
-
+# firstly: if the click cell is "M", then change it to "x", stop
+# if not "M", then do DFS for the click cell
+# define the rule of DFS:
+# first, check 8 directions,
 class Solution:
     def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (-1, -1), (-1, 1), (1, 1), (1, -1)]
