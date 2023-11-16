@@ -34,16 +34,14 @@ Only one valid answer exists.
 # Conform that there is alway one and only one valid answer
 # You may not use the same element twice.
 # Approach 1: Brute Force: O(n^2)
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+def twoSum(self, nums: List[int], target: int) -> List[int]:
         for i in range(len(nums) - 1):
             for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return (i, j)
 
 # Approach 2: Hashmap with one pass: O(N)
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+def twoSum(self, nums: List[int], target: int) -> List[int]:
         # input = [2,7,11,15]
         # when we check 2,  9-2 = 5, then we need to find the index of 5
         # to do this we might need a hashmap to map value to index

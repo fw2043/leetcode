@@ -72,6 +72,42 @@ class LRUCache:
 
 
 
-# Approach 2:
-#TODO: hashmap to store the key,value and double linked list to store least recent used and most recent used?
+# Approach 2:hashmap to store the key,value and double linked list to store least recent used and most recent used?
+# hashmap can make get/put with O(1) time complexity
+# double linked list can be easy for re-order
+"""
+key | value
+1        2
+2        2
+
+However, if the value in the hashmap is to only store value, then when evict happens,  we need to re-order the list, it is hard 
+What if:
+the value stores a double linked list that it contains the value of the key 
+and 
+a left point which is to point to the LRU/least recently used key/value
+and 
+a right point which is to point to the most recently used key/value
+
+key | value
+1   |   a node
+"""
+##### Data strucuture
+# a Node include key, value and previous, next node
+# a hashmap to map key and a node
+# two pointers: left --> LRU, right ---> most recent
+
+# when we put/update or remove a key ---> remove from double linked list, after update the hashmap, then insert into double
+# linked list again
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -21,6 +21,9 @@ https://docs.python.org/3/library/collections.html#
 # Hashmap: 
 **Time complexity for insert and delete is: O(1)**
  
+insert, remove and search is O(1). 
+Downside: it does not maintain the order!
+
 
  # Hash set:
  Initialize: hashset = set()

@@ -81,7 +81,12 @@ How to set dummy node: dummy = ListNode(0, head)
 
 
 
+**Note**
 
+**when cur = head**
+1. while cur: ----> at the end of the loop, cur will point to null
+2. while cur.next: -----> at the end of the loop, cur will point to the last node
+3. while cur.next and cur.next != key: # cur will stop right before the node we want to delete
 
 
 
