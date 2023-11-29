@@ -1,30 +1,39 @@
-# Summary:
-https://leetcode-cn.com/circle/discuss/SrePlc/
-https://blog.csdn.net/weixin_43206795/article/details/105718567
-https://blog.csdn.net/weixin_45629285/article/details/111146240?spm=1001.2101.3001.6650.7&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7EHighlightScore-7.queryctrv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7EHighlightScore-7.queryctrv2&utm_relevant_index=13
-1. Basic prefix sum:
+# prefix sum: 
 
-2d: 
-       
-        class NumMatrix:
-        
-            def __init__(self, matrix: List[List[int]]):
-                rows, cols = len(matrix), len(matrix[0])
-                # sum[i][j] is sum of all elements inside the rectangle [0,0,i,j]
-                self.sum = [[0] * (cols + 1) for _ in range(rows + 1)]
-                for r in range(1, rows + 1):
-                    for c in range(1, cols + 1):
-                        self.sum[r][c] = self.sum[r-1][c] + self.sum[r][c-1] - self.sum[r-1][c-1] + matrix[r-1][c-1]
-                
-        
-            def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
-                # Since our `sum` starts by 1 so we need to increase r1, c1, r2, c2 by 1
-                r1, c1, r2, c2 = row1 + 1, col1 + 1, row2 + 1, col2 + 1
-                return self.sum[r2][c2] - self.sum[r2][c1 - 1] - self.sum[r1 - 1][c2] + self.sum[r1 - 1][c1 - 1]
-        
+A prefix sum is a super useful technique that can be used with arrays. Suppose we have an array nums = [2,-1,3,-3,4]. The basic idea here is that we create an array, say, prefix, and fill it up such that the value at its ith index denotes the running sum of a nums subarray that starts from 0 and goes up to and including the ith index. This is extremely useful when we want to retrieve the sum of a subarray ending at an arbitrary index, say i.
 
-        
-leetcode 303, 304
+So, given an array [2,-1,3,-3,4], the prefix would be [2,1,4,1,5].
 
-1. hashmap:
-leetcode 560, 525, 
+After building this sum, we can calculate the sum of any subarray that starts at left and ends at right in O(1) time. This is because we won't need to recalculate it. We can do this by prefix[right] - prefix[left - 1]. 
+The -1 will ensure we exclude the running sum of all the numbers before left. However, if left points to 0, 
+our prefix[left-1] will just be 0.
+
+    class PrefixSum:
+        def __init__(self, nums):
+            self.prefix = []
+            total = 0
+            for n in nums:
+                total += n
+                self.prefix.append(total)
+        
+        def rangeSum(self, left, right):
+            preRight = self.prefix[right]
+            preLeft = self.prefix[left - 1] if left > 0 else 0
+            return (preRight - preLeft)
+
+
+
+There is another one called postfix which starts from the end of an array, instead of the beginning of an array.
+
+# Time Complexity
+The time complexity to build the initial prefix sum is O(n). 
+However, to calculate a range sum, we will only perform O(1) operations no matter how big the array is. 
+If we don't need the initial array, we can actually overwrite it with its prefix sum, 
+which will bring the time complexity to O(1). This works because the size of an array's prefix array will always 
+be the same as itself.
+
+# Closing Notes
+Prefix sums are ubiquitous and can be extremely useful on integer arrays whenever you need to maintain a running sum. 
+It should also be noted that sum is not the only operation we can perform using this technique. 
+We can also calculate a prefix product. We can also do the opposite and get a postfix sum, which would do the same operation, 
+just in reverse order.
