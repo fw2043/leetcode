@@ -16,44 +16,54 @@ Constraints:
 -107 <= k <= 107
 """
 # continuous subarrays
+# the value could be negative
+
+
+# Approach 1: Brute Froce: O(n^2)
+class Solution(object):
+    def subarraySum(self, nums, k):
+        """
+        [-2,    1,    2,   -2,   5,   -2,   1] k = 3
+        start, end
+        """
+        cnt = 0
+        for start in range(len(nums)):
+            total = 0
+            for end in range(start, len(nums)):
+                total += nums[end]
+                if total == k:
+                    cnt += 1
+        return cnt
+
+# Approach 2:
+# since the total of a small subarray is part of the total of a big subarray
+# can we use prefix sum approach?
+# sum(nums[2, 6] = prefixSum[6] - prefixSum[2 - 1]
+# sum(nums[i, j] = prefixSum[j] - prefixSum[i - 1]
+# if k = prefixSum[j] - prefixSum[i - 1]: cnt+= 1
+# Our goal is to find a i which can satisfy the  condition: prefixSum[i - 1] = prefixSum[j] - k
+# for example: [1, -1, 1,1,1,1] k = 3
+# res = 4
 # HashMap to store the count for each prefix sum
-# prefix as the key, count/time prefix happens as value
+# prefixSum as the key, count/time prefixSum happens as value
 # default value: {0,1}
 # O(n)
 
-class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        res = 0
+class Solution(object):
+    def subarraySum(self, nums, k):
+        # [1, -1, 1, 1, 1, 1] k =3
+        # sum(nums[1, 5]) = prefix[5] - prefix[1 - 0]
+        # sum(nums[i, j]) = prefix[j] - prefix[i - 1]
+        # if k = prefix[j] - prefix[i - 1]: cnt +=1
+        cnt = 0
         curSum = 0
-        presum = {0: 1}
-        # find how many times we can meet sum[right] - sum[left] = k
+        prefixSum = {0: 1}
         for n in nums:
-            # update the current sum[right]
             curSum += n
-            # diff == sum[left]
             diff = curSum - k
+            # update cnt
+            cnt += prefixSum.get(diff, 0)
+            # update prefixSum
+            prefixSum[curSum] = 1 + prefixSum.get(curSum, 0)
 
-            res += presum.get(diff, 0)
-
-            # update curSum count
-            presum[curSum] = 1 + presum.get(curSum, 0)
-
-        return res
-
-# Brute Froce: O(n^2)
-class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        res = 0
-        n = len(nums)
-        presum = [0 for i in range(n + 1)]
-
-        for i in range(1, n + 1):
-            presum[i] = presum[i - 1] + nums[i - 1]
-
-        for i in range(n):
-            for j in range(i, n):
-                if presum[j + 1] - presum[i] == k:
-                    res += 1
-
-        return res
-
+        return cnt

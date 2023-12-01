@@ -32,7 +32,7 @@ strs[i] consists of lowercase English letters.
 
 # Approach 1: Sort them
 # if we sort them like eat and tea --> aet
-# Time Complexity: O(N*KlogK), where N is the length of strs, and Kis the maximum length of a string in strs.
+# Time Complexity: O(N*KlogK), where N is the length of strs, and K is the maximum length of a string in strs.
 # The outer loop has complexity O(N) as we iterate through each string. Then, we sort each string in O(KlogK) time.
 # Space Complexity: O(NK), the total information content stored in ans.
 
@@ -51,4 +51,3 @@ class Solution:
                 ans[sorted_str] = [orginal]
 
         return ans.values() # return values not the keys
-
