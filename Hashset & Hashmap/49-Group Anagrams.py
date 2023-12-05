@@ -38,6 +38,12 @@ strs[i] consists of lowercase English letters.
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        """
+               "aet": ["ate","eat","tea"],
+               "ant" : ["nat","tan"],
+               "abt": ["bat"]
+        """
+
         if len(strs) < 1:
             return strs
         ans = {}

@@ -36,8 +36,8 @@ A Heap has the following properties:
     
   Nth largest/smallest element in the list:
   
-    heapq.nlargest(3, list1)
-    heapq.nsmallest(3, list2)
+    nlargest(k, iterable, key = fun): This function is used to return the k largest elements from the iterable specified and satisfy the key if mentioned.
+    nsmallest(k, iterable, key = fun): This function is used to return the k smallest elements from the iterable specified and satisfy the key if mentioned.
    
  # Appication:
  1. Heap Sort:

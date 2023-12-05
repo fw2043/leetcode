@@ -1,9 +1,11 @@
 # Create a dict:
 dict = {}
 Dict = {1: 'Geeks', 'name': 'For', 3: 'Geeks'}
+
 # accessing a element using key
 print(Dict['name'])
 print(Dict[1])
+
 # Get vaule
 print(Dict.get(3))
 
@@ -71,6 +73,7 @@ key_value = {2: 56, 1: 2, 5: 12, 4: 24, 6: 18, 3: 323}
 for i in sorted(key_value):
     print(i, key_value[i])
 sorted(key_value, reverse = True) # [6, 5, 4, 3, 2, 1]
+
 # sort by value: [(1, 2), (5, 12), (6, 18), (4, 24), (2, 56), (3, 323)]
 list = sorted(key_value.items(), key=lambda item: item[1])
 # items will be a list: [(2, 56), (1, 2), (5, 12), (4, 24), (6, 18), (3, 323)]

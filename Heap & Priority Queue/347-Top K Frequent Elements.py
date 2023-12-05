@@ -19,8 +19,14 @@ It is guaranteed that the answer is unique.
 
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 """
+# Clarify:
+# what is we have multiple answers?
+# what is k >= len(nums)
+
 # ege case: k = len(nums)
-# Heap:
+
+
+# Approach 1: Heap:
 # Time complexity: O(Nlogk)
 # Space complexity:O(N+k)
 class Solution:
@@ -38,31 +44,29 @@ class Solution:
 
 
 
-
-# Bucket sort:
+# Approach 2: Brute Force:
 # bucket sort: count each item occurs
 # the worst case, every nums only appears once, so the length of bucket(count[i]) == length of the nums
 # for example: [1,2,3,4,5,6,7,8,....100]
 # a dict to count each item occurs
-# Time complexity: O(n)
+# Time complexity: O(n * K) ====> worst case: O(n^2)
 # Space complexity: O(n)
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-
-        count = {}
-        #
-        freq = [[] for i in range(len(nums) + 1)]
-
+        # {n: freq}
+        cnt = {}
         for n in nums:
-            count[n] = 1 + count.get(n, 0)
-        # count = {1:3, 2:2, 3: 1}
-        for n, c in count.items():
-            freq[c].append(n)
-        # freq =[[3],[2], [1]]
+            cnt[n] = 1 + cnt.get(n, 0)
+
+        # sort the cnt by freq
+        freq = sorted(cnt.values(), reverse=True)
         res = []
-        for i in range(len(freq) - 1, 0, -1):  # reversere from last to first
-            for n in freq[i]:
-                res.append(n)
-                if len(res) == k:
-                    return res
+        for i in range(k):
+            for n in cnt:
+                if cnt[n] == freq[i] and n not in res:
+                    res.append(n)
+        return res
+
+
+
 
