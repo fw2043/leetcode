@@ -22,12 +22,27 @@ n == height.length
 2 <= n <= 105
 0 <= height[i] <= 104
 """
-# How do we get 49? 7 * 7 ===> height[r] * (r - l)
+# How do we get 49? 7 * 7 ===> min(height[r], height[r]) * (r - l)
 # Can't sort the array
+
+# Appraoch Brute Force
+# Time complexity: O(n^2)
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        max_sum = 0
+        for i in range(len(height)):
+            for j in range(i + 1, len(height)):
+                current_sum = (j - i) * min(height[i], height[j])
+                max_sum = max(max_sum, current_sum)
+
+        return max_sum
+
+# Approach 2: Two Pointer Approach
 # Find max(2sum)? ----> two pointers
-# l = 0, r = len(height) - 1
-# the key is why/when we need to update the pointers?
-# which one is smaller(not desirable), then move it.
+# left = 0, right= len(height) - 1
+# the key is when to move the pointers?
+# since no matter moving left or right pointer, the width(right - left) is decreasing,
+# so to optimize the result, we should move the pointer whoes height[] is smaller.
 # Time complexity: O(n)
 # Space complexity: O(1)
 class Solution:
@@ -45,17 +60,3 @@ class Solution:
                 r -= 1
         return res
 
-
-
-# Brute Force
-# Time complexity: O(n^2)
-# Space complexity: O(n)
-class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        # brute force
-        res = 0
-        for i in range(len(height)):
-            for j in range( i + 1, len(height)):
-                area = (j - i) * min(height[i], height[j])
-                res = max(area, res)
-        return res

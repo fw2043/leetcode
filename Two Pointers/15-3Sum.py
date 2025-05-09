@@ -23,13 +23,15 @@ Constraints:
 -105 <= nums[i] <= 105
 """
 # Notice that the solution set must not contain duplicate triplets.
+# Brute Force ---> O(n^3)
+# Can we try to target O(n^2)
+# First sort the array: O(nlogn)
 # Using the experience two sum II: leetcode 167
 # step 1: sort the array: O(nlogn)
 # step 2: for each item nums[i], check two sums for left, right pointers:  O(n^2)
 # When three sums == target, how to update the pointers?---> only update one pointer, every loop only update one pointer
 # what if the element equal to the previous one # will give you duplicate result, so skip
-
-
+#  such that i != j, i != k, and j != k ---> each item only use once: move the pointer which you chose(l) above more steps until nums[l] != nums[l-1]
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # Input: nums = [-1,0,1,2,-1,4]
